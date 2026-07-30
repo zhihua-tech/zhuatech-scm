@@ -1,0 +1,3 @@
+<!-- Copyright 2026 上海如静知华信息科技有限公司 -->
+<script setup>import AppIcon from './AppIcon.vue';</script>
+<template><div class="portal-layout"><header class="portal-head"><div class="portal-brand"><span>ZH</span><div><b>ZhuaTech SCM</b><small>采购协同工作台</small></div></div><nav><RouterLink to="/planner/workbench">我的工作台</RouterLink><a>采购订单</a><a>到货跟踪</a><a>供应商沟通</a></nav><div class="portal-user"><button><AppIcon name="bell" :size="17"/></button><span class="avatar">沈</span><div><b>沈雨欣</b><small>采购专员</small></div></div></header><main class="portal-main"><slot/></main><footer class="portal-footer">上海如静知华信息科技有限公司 · <a href="https://www.zhuatech.cn/">www.zhuatech.cn</a></footer></div></template>
