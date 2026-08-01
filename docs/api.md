@@ -14,3 +14,7 @@
 | POST | `/api/scm/alerts/{id}/close` | 关闭风险预警 |
 
 除登录接口外均需 `Authorization: Bearer <token>`。演示接口仅用于个人非商业学习。
+
+## 库存覆盖
+
+`POST /api/scm/inventory-coverage`：计算库存覆盖天数、订货点、补货缺口和风险状态。
