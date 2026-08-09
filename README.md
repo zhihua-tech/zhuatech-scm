@@ -16,6 +16,10 @@
 
 </div>
 
+## 供应中断情景推演
+
+新增 `POST /api/scm/insights/supply-disruption-scenario`，根据现有库存、日均需求、在途延误、替代来源和安全库存天数计算到货前覆盖天数与缺口数量，输出 `COVERED / WATCH / SHORTAGE`。系统会生成加急采购、跨仓调拨和需求冻结等建议，帮助供应链团队快速处置断供风险。
+
 ## 库存覆盖与补货缺口
 
 `POST /api/scm/inventory-coverage` 根据日均需求、现存量、在途量、安全库存和采购提前期，计算覆盖天数、订货点与建议缺口。覆盖期短于采购提前期时自动标记 `CRITICAL`，并建议加急采购或跨仓调拨。
