@@ -16,6 +16,10 @@
 
 </div>
 
+## 安全库存与补货建议
+
+新增 `POST /api/scm/insights/safety-stock`，根据需求均值与波动、补货提前期、目标服务水平、在库及在途数量计算安全库存、再订货点和建议订购量，返回 `ORDER_NOW / WATCH / HEALTHY`。它可直接支撑采购补货清单，并对高波动、长交期和紧急缺货给出明确动作。
+
 ## 供应中断情景推演
 
 新增 `POST /api/scm/insights/supply-disruption-scenario`，根据现有库存、日均需求、在途延误、替代来源和安全库存天数计算到货前覆盖天数与缺口数量，输出 `COVERED / WATCH / SHORTAGE`。系统会生成加急采购、跨仓调拨和需求冻结等建议，帮助供应链团队快速处置断供风险。
