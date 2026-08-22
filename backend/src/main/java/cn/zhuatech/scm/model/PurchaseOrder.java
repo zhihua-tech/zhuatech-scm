@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.scm.model;
 import jakarta.persistence.*;import java.math.BigDecimal;import java.time.LocalDate;
 @Entity @Table(name="scm_purchase_order") public class PurchaseOrder extends BaseEntity {

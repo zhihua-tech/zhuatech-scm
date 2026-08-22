@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.scm.controller;
 import cn.zhuatech.scm.common.ApiResponse;import cn.zhuatech.scm.dto.ScmDto.*;import cn.zhuatech.scm.service.ScmService;import jakarta.validation.Valid;import org.springframework.security.access.prepost.PreAuthorize;import org.springframework.web.bind.annotation.*;import java.util.List;
 @RestController @RequestMapping("/api/scm") @PreAuthorize("hasAnyRole('ADMIN','PLANNER','BUYER')") public class SupplyChainController {

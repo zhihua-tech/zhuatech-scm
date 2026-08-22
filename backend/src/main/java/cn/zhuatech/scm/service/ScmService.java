@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.scm.service;
 import cn.zhuatech.scm.common.BusinessException;import cn.zhuatech.scm.dto.ScmDto.*;import cn.zhuatech.scm.model.*;import cn.zhuatech.scm.repository.*;import org.springframework.stereotype.Service;import org.springframework.transaction.annotation.Transactional;import java.math.BigDecimal;import java.time.*;import java.time.format.DateTimeFormatter;import java.util.List;
 @Service @Transactional(readOnly=true) public class ScmService {

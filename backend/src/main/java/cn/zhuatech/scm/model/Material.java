@@ -1,4 +1,4 @@
-/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. */
+/* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.scm.model;
 import jakarta.persistence.*;import java.math.BigDecimal;
 @Entity @Table(name="scm_material") public class Material extends BaseEntity {

@@ -1,3 +1,3 @@
-/* Copyright 2026 上海如静知华信息科技有限公司 */
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 import {createRouter,createWebHistory} from 'vue-router';import LoginView from '../views/LoginView.vue';import AdminDashboard from '../views/admin/AdminDashboard.vue';import DemandPlanning from '../views/admin/DemandPlanning.vue';import PurchaseOrders from '../views/admin/PurchaseOrders.vue';import SupplierPerformance from '../views/admin/SupplierPerformance.vue';import PlannerWorkbench from '../views/planner/PlannerWorkbench.vue';
 export default createRouter({history:createWebHistory(),routes:[{path:'/',redirect:'/admin/dashboard'},{path:'/login',component:LoginView},{path:'/admin/dashboard',component:AdminDashboard},{path:'/admin/demands',component:DemandPlanning},{path:'/admin/purchases',component:PurchaseOrders},{path:'/admin/suppliers',component:SupplierPerformance},{path:'/planner/workbench',component:PlannerWorkbench}]})

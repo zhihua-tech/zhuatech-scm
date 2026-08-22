@@ -1,4 +1,4 @@
-/* Copyright 2026 上海如静知华信息科技有限公司 */
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 export const stats=[['待平衡需求','12','未来 30 天 · 3 类物料','blue'],['在途采购','28','订单金额 ¥268.4万','green'],['交付风险','3','其中 1 项已逾期','red'],['库存健康度','91.6%','较上周提升 2.3%','amber']]
 export const demands=[
  {no:'DP-20260730-036',material:'工业控制芯片 X48',code:'MAT-IC-1048',source:'销售预测 / 华东区域',qty:'18,000 片',stock:'8,600',gap:'-9,400',date:'08-07',status:'待转采购',risk:'高'},
