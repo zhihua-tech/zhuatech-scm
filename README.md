@@ -16,6 +16,10 @@
 
 </div>
 
+## 企业级增强：供应商准入治理
+
+新增制裁、税务、收款账户、质量资质、数据保护、财务风险和业务连续性联合尽调，详见 [供应商准入治理](docs/ENTERPRISE_SUPPLIER_QUALIFICATION.md)。
+
 ## 安全库存与补货建议
 
 新增 `POST /api/scm/insights/safety-stock`，根据需求均值与波动、补货提前期、目标服务水平、在库及在途数量计算安全库存、再订货点和建议订购量，返回 `ORDER_NOW / WATCH / HEALTHY`。它可直接支撑采购补货清单，并对高波动、长交期和紧急缺货给出明确动作。
