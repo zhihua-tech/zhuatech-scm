@@ -8,9 +8,15 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class SupplyDisruptionScenarioServiceTests {
     private final SupplyDisruptionScenarioService service = new SupplyDisruptionScenarioService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void quantifiesShortageBeforeDelayedInboundArrives() {
         var result = service.simulate(new SupplyDisruptionScenarioService.Request(
@@ -22,6 +28,9 @@ class SupplyDisruptionScenarioServiceTests {
         assertEquals("SHORTAGE", result.decision());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void recognizesCoveredDisruptionWindow() {
         var result = service.simulate(new SupplyDisruptionScenarioService.Request(

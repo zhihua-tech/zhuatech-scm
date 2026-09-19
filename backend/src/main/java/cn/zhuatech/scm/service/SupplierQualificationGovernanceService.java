@@ -7,8 +7,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class SupplierQualificationGovernanceService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Assessment assess(Request request) {
         List<String> blockers = new ArrayList<>();
         List<String> conditions = new ArrayList<>();
@@ -26,12 +32,21 @@ public class SupplierQualificationGovernanceService {
                 List.copyOf(blockers), List.copyOf(conditions));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String supplierCode, boolean sanctionsCleared,
                           boolean taxRegistrationValid, boolean bankAccountVerified,
                           boolean criticalSupplier, boolean qualityCertificateValid,
                           boolean dataProtectionAccepted, boolean highFinancialRisk,
                           boolean continuityPlanReviewed) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Assessment(String supplierCode, Decision decision, List<String> blockers,
                              List<String> conditions) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Decision { APPROVE, CONDITIONAL, REJECT }
 }

@@ -1,7 +1,13 @@
 /* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.scm.config;
 import cn.zhuatech.scm.model.*;import cn.zhuatech.scm.repository.*;import org.springframework.boot.CommandLineRunner;import org.springframework.context.annotation.*;import org.springframework.security.crypto.password.PasswordEncoder;import java.math.BigDecimal;import java.time.LocalDate;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Configuration public class DataInitializer {
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Bean CommandLineRunner seed(UserRepository users,SupplierRepository suppliers,MaterialRepository materials,DemandPlanRepository demands,PurchaseOrderRepository orders,SupplyAlertRepository alerts,PasswordEncoder encoder){return args->{if(users.count()>0)return;
   users.save(new UserAccount("admin",encoder.encode("admin123"),"供应链管理员",UserAccount.Role.ADMIN));users.save(new UserAccount("planner",encoder.encode("plan123"),"计划专员",UserAccount.Role.PLANNER));users.save(new UserAccount("buyer",encoder.encode("buyer123"),"采购专员",UserAccount.Role.BUYER));
   var s1=suppliers.save(new Supplier("SUP-0018","苏州恒微电子科技有限公司","A",new BigDecimal("97.80"),new BigDecimal("99.32"),"合作中"));var s2=suppliers.save(new Supplier("SUP-0026","宁波东港精密制造有限公司","A",new BigDecimal("93.60"),new BigDecimal("98.71"),"合作中"));var s3=suppliers.save(new Supplier("SUP-0041","无锡拓新自动化有限公司","B",new BigDecimal("88.40"),new BigDecimal("97.90"),"观察中"));

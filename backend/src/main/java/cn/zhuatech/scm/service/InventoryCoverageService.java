@@ -9,8 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class InventoryCoverageService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result calculate(Request request) {
         int available = request.onHandQty() + request.inTransitQty();
         double coverageDays = Math.round(available * 100.0 / request.dailyDemand()) / 100.0;
@@ -25,9 +31,15 @@ public class InventoryCoverageService {
         return new Result(request.materialCode(), available, coverageDays, reorderPoint, shortageQty, status, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String materialCode, @Positive int dailyDemand,
                           @Min(0) int onHandQty, @Min(0) int inTransitQty,
                           @Min(0) int safetyStock, @Positive int leadDays) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String materialCode, int availableQty, double coverageDays,
                          int reorderPoint, int shortageQty, String status, List<String> actions) {}
 }

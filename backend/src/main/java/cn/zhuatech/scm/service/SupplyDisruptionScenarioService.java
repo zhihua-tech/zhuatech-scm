@@ -11,8 +11,14 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class SupplyDisruptionScenarioService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result simulate(Request request) {
         BigDecimal preArrivalSupply = request.onHandQuantity().add(request.alternativeSupplyQuantity());
         BigDecimal coverageDays = preArrivalSupply.divide(request.dailyDemand(), 1, RoundingMode.DOWN);
@@ -34,6 +40,9 @@ public class SupplyDisruptionScenarioService {
             request.inboundQuantity(), decision, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(@NotBlank String materialCode,
                           @DecimalMin("0") BigDecimal onHandQuantity,
                           @DecimalMin("0.01") BigDecimal dailyDemand,
@@ -42,6 +51,9 @@ public class SupplyDisruptionScenarioService {
                           @DecimalMin("0") BigDecimal alternativeSupplyQuantity,
                           @Min(0) int safetyStockDays) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(String materialCode, BigDecimal preArrivalCoverageDays,
                          BigDecimal shortageQuantity, BigDecimal delayedInboundQuantity,
                          String decision, List<String> actions) {}

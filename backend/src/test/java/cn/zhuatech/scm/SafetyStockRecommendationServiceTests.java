@@ -7,9 +7,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class SafetyStockRecommendationServiceTests {
     private final SafetyStockRecommendationService service = new SafetyStockRecommendationService();
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void recommendsImmediateOrderForLowInventoryPosition() {
         var result = service.recommend(new SafetyStockRecommendationService.Request(20, 8, 10, 2, 0.97, 80, 20));
@@ -17,6 +23,9 @@ class SafetyStockRecommendationServiceTests {
         assertTrue(result.suggestedOrderQuantity() > 0);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void keepsHealthyInventoryUnderControl() {
         var result = service.recommend(new SafetyStockRecommendationService.Request(10, 2, 5, 0.5, 0.95, 200, 30));

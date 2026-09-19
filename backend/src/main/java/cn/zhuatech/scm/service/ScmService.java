@@ -1,14 +1,56 @@
 /* Copyright 2026 Shanghai Rujing Zhihua Information Technology Co., Ltd. · https://www.zhuatech.cn/ */
 package cn.zhuatech.scm.service;
 import cn.zhuatech.scm.common.BusinessException;import cn.zhuatech.scm.dto.ScmDto.*;import cn.zhuatech.scm.model.*;import cn.zhuatech.scm.repository.*;import org.springframework.stereotype.Service;import org.springframework.transaction.annotation.Transactional;import java.math.BigDecimal;import java.time.*;import java.time.format.DateTimeFormatter;import java.util.List;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service @Transactional(readOnly=true) public class ScmService {
  private final SupplierRepository suppliers;private final MaterialRepository materials;private final DemandPlanRepository demands;private final PurchaseOrderRepository orders;private final SupplyAlertRepository alerts;
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public ScmService(SupplierRepository suppliers,MaterialRepository materials,DemandPlanRepository demands,PurchaseOrderRepository orders,SupplyAlertRepository alerts){this.suppliers=suppliers;this.materials=materials;this.demands=demands;this.orders=orders;this.alerts=alerts;}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public Dashboard dashboard(){var all=orders.findAllByOrderByExpectedDateAsc();var amount=all.stream().map(PurchaseOrder::getAmount).reduce(BigDecimal.ZERO,BigDecimal::add);long delayed=all.stream().filter(o->o.getExpectedDate().isBefore(LocalDate.now())&&!"已完成".equals(o.getStatus())).count();long low=materials.findAll().stream().filter(m->m.getCurrentStock().compareTo(m.getSafetyStock())<0).count();return new Dashboard(demands.countByStatus("待转采购"),all.stream().filter(o->!"已完成".equals(o.getStatus())).count(),delayed,alerts.countByStatus("待处理"),amount,low,all.stream().filter(o->!"已完成".equals(o.getStatus())).limit(5).map(OrderView::from).toList());}
- public List<SupplierView> suppliers(){return suppliers.findAll().stream().map(SupplierView::from).toList();} public List<MaterialView> materials(){return materials.findAll().stream().map(MaterialView::from).toList();} public List<DemandView> demands(){return demands.findAllByOrderByRequiredDateAsc().stream().map(DemandView::from).toList();} public List<OrderView> orders(){return orders.findAllByOrderByExpectedDateAsc().stream().map(OrderView::from).toList();} public List<AlertView> alerts(){return alerts.findByStatusOrderByCreatedAtDesc("待处理").stream().map(AlertView::from).toList();}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
+ public List<SupplierView> suppliers(){return suppliers.findAll().stream().map(SupplierView::from).toList();} /**
+                                                                                                               * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                                                                                               */
+public List<MaterialView> materials(){return materials.findAll().stream().map(MaterialView::from).toList();} /**
+                                                                                                                                                                                                                            * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                                                                                                                                                                                                            */
+public List<DemandView> demands(){return demands.findAllByOrderByRequiredDateAsc().stream().map(DemandView::from).toList();} /**
+                                                                                                                                                                                                                                                                                                                                                         * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                                                                                                                                                                                                                                                                                                                                         */
+public List<OrderView> orders(){return orders.findAllByOrderByExpectedDateAsc().stream().map(OrderView::from).toList();} /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  */
+public List<AlertView> alerts(){return alerts.findByStatusOrderByCreatedAtDesc("待处理").stream().map(AlertView::from).toList();}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Transactional public DemandView createDemand(CreateDemandRequest r){var material=materials.findById(r.materialId()).orElseThrow(()->new BusinessException("物料不存在"));var no="DP-"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));return DemandView.from(demands.save(new DemandPlan(no,material,r.requiredQty(),r.requiredDate(),"待转采购",r.source())));}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Transactional public OrderView createOrder(CreateOrderRequest r){var supplier=suppliers.findById(r.supplierId()).orElseThrow(()->new BusinessException("供应商不存在"));var material=materials.findById(r.materialId()).orElseThrow(()->new BusinessException("物料不存在"));var no="PO-"+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));return OrderView.from(orders.save(new PurchaseOrder(no,supplier,material,r.quantity(),r.unitPrice(),r.expectedDate(),"草稿")));}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Transactional public OrderView approve(Long id){var order=order(id);if(!"草稿".equals(order.getStatus()))throw new BusinessException("仅草稿采购单可审核");order.approve();return OrderView.from(order);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  @Transactional public OrderView receive(Long id,ReceiveRequest r){var order=order(id);if("草稿".equals(order.getStatus()))throw new BusinessException("采购单尚未审核");if("已完成".equals(order.getStatus()))throw new BusinessException("采购单已完成");order.receive(r.quantity());return OrderView.from(order);}
- @Transactional public AlertView closeAlert(Long id){var alert=alerts.findById(id).orElseThrow(()->new BusinessException("预警不存在"));alert.close();return AlertView.from(alert);} private PurchaseOrder order(Long id){return orders.findById(id).orElseThrow(()->new BusinessException("采购订单不存在"));}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
+ @Transactional public AlertView closeAlert(Long id){var alert=alerts.findById(id).orElseThrow(()->new BusinessException("预警不存在"));alert.close();return AlertView.from(alert);} /**
+                                                                                                                                                                                 * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                                                                                                                                                                 */
+private PurchaseOrder order(Long id){return orders.findById(id).orElseThrow(()->new BusinessException("采购订单不存在"));}
 }

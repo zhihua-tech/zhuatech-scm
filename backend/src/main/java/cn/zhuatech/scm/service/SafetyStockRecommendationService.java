@@ -8,9 +8,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class SafetyStockRecommendationService {
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Result recommend(Request request) {
         double z = request.serviceLevel() >= 0.99 ? 2.33
                 : request.serviceLevel() >= 0.97 ? 1.88
@@ -32,6 +38,9 @@ public class SafetyStockRecommendationService {
         return new Result(safetyStock, reorderPoint, inventoryPosition, suggestedOrder, status, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Request(
             @DecimalMin("0.01") double averageDailyDemand,
             @DecimalMin("0") double demandStdDev,
@@ -42,6 +51,9 @@ public class SafetyStockRecommendationService {
             int inboundStock
     ) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record Result(int safetyStock, int reorderPoint, int inventoryPosition,
                          int suggestedOrderQuantity, String status, List<String> actions) {}
 }
